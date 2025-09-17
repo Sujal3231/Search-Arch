@@ -1,0 +1,104 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fogWrapper {
+  position: fixed; /* stays over your slideshow */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2; /* must be ABOVE slideshow */
+  pointer-events: none; /* makes sure you can click links behind fog */
+}
+
+.fog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.image01,
+.image02 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%; /* extra wide so it drifts fully */
+  height: 100%;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-size: cover;
+  opacity: 0.3; /* adjust for subtle effect */
+  animation: drift 60s linear infinite;
+}
+
+.fog:nth-child(2) .image01,
+.fog:nth-child(2) .image02 {
+  animation: driftReverse 120s linear infinite;
+}
+
+.fog:nth-child(3) .image01,
+.fog:nth-child(3) .image02 {
+  animation: drift 90s linear infinite;
+}
+
+/* Example background images for fog swirl PNGs */
+.image01 {
+  background-image: url('../Images/fog.webp');
+}
+
+.image02 {
+  background-image: url('../Images/fog.webp');
+}
+
+/* Drift animations */
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes driftReverse {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+
+.slideshow li span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: imageAnimation 15s linear infinite;
+}
+
+.slideshow li:nth-child(1) span {
+  background-image: url('../Images/homebg1.webp');
+  animation-delay: 0s;
+}
+.slideshow li:nth-child(2) span {
+  background-image: url('../Images/homebg2.webp');
+  animation-delay: 5s;
+}
+.slideshow li:nth-child(3) span {
+  background-image: url('../Images/homebg3.webp');
+  animation-delay: 10s;
+}
+
+@keyframes imageAnimation {
+  0%   { opacity: 0.5; animation-timing-function: ease-in; }
+  3%   { opacity: 1; animation-timing-function: ease-out; }
+  33%  { opacity: 1; }
+  38%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+

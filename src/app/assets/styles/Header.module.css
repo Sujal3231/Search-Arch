@@ -1,0 +1,12 @@
+/* Header.module.css */
+.header {
+    background: #0000;
+    left: 0;
+    margin-bottom: 29px !important;
+    max-height: 120px;
+    max-height: var(--header-max-height);
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
